@@ -1,0 +1,18 @@
+Claro, aquí tienes un breve resumen de todo el trabajo realizado hasta ahora:
+
+1. **Migración a Cliente-Servidor y Gestión de Usuarios:**
+   - Se migró un proyecto web que usaba `sessionStorage` y `SessionStorage` a un modelo cliente-servidor con un backend y base de datos.
+   - Se ajustó el archivo `usuarios.html` para incluir un backend funcional, permitiendo crear casos y gestionar usuarios.
+   - Se corrigieron problemas en `usuarios.js`, como errores de sintaxis con `await` en los eventos de paginación y problemas de renderizado de la tabla debido a la variable `row` no definida.
+   - Se solucionó una discrepancia entre "active"/"inactive" (backend) y "activo"/"inactivo" (frontend) ajustando el `<select>` en `usuarios.html` para usar "activo" e "inactivo", y normalizando los valores en `usuarios.js`.
+
+2. **Enlace a `index.html`:**
+   - Se añadió un enlace `<a href="index.html">` alrededor de `<span>Justicia Digital</span>` en el `<header>` de `usuarios.html` para redirigir a la página principal.
+   - Se intentó alinear los estilos con Bootstrap y `usuarios.css`, pero se ajustó finalmente a un cambio mínimo tras tu indicación, proporcionando solo el fragmento específico para el enlace.
+
+3. **Problema Actual con `procedimientos.html`:**
+   - Se identificó que al registrar casos, el campo `nombreProceso` no se guarda en la base de datos ni se muestra en la tabla, a pesar de que otros campos como `nurej`, `sujeto`, `tipo`, etc., se registran correctamente.
+   - Los logs muestran que `nombreProceso` está presente en el objeto enviado al backend, pero no en la respuesta ni en el caso guardado, sugiriendo un problema en el backend, el modelo de la base de datos o la captura del dato.
+   - Se solicitaron los archivos `procedimientos.html`, `procedimientos.js`, el controller del backend (e.g., `casos.controller.js`) y el modelo de la base de datos para diagnosticar y solucionar el problema.
+
+El trabajo se guardará, y puedes continuar desde este punto mañana. ¡Descansa bien!

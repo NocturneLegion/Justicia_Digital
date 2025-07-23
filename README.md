@@ -1,23 +1,75 @@
-# Justicia Digital
+# Justicia Digital - Nueva Versión Cliente/Servidor
 
-**Justicia Digital** es una página web que funciona de forma local para un bufete de abogados. Su propósito es facilitar el seguimiento de casos legales y gestionar las labores diarias del equipo jurídico.
+Este proyecto es una versión mejorada y modernizada del sistema web "Justicia Digital". Ahora implementa una arquitectura cliente-servidor, utiliza una base de datos SQLite para almacenar datos (incluyendo archivos binarios), y aprovecha tecnologías web modernas para una experiencia robusta y profesional.
 
-## 🛠 Tecnologías utilizadas
+## Mejoras y Cambios Principales
 
-- HTML
-- CSS
-- JavaScript
+- **Arquitectura Cliente/Servidor:**
+  - Backend en Node.js con Express.
+  - Frontend en HTML, CSS, JS, Bootstrap y Tailwind.
+- **Base de Datos SQLite:**
+  - Almacenamiento de datos estructurados y archivos binarios (por ejemplo, documentos y fotos).
+  - Persistencia local y fácil portabilidad.
+- **Gestión de Archivos:**
+  - Subida y descarga de archivos desde la base de datos.
+- **Frontend Moderno:**
+  - Uso de Bootstrap y Tailwind para una interfaz responsiva y atractiva.
+  - Separación clara de vistas y lógica.
+- **Mejoras de Seguridad y Organización:**
+  - Manejo de sesiones y autenticación.
+  - Código modular y organizado.
+- **Dependencia mínima de recursos externos:**
+  - Imágenes y recursos estáticos almacenados localmente para funcionamiento offline.
 
-## 🚀 Uso
+## Tecnologías Utilizadas
 
-No se requiere instalación.  
-Simplemente abre el archivo `index.html` en tu navegador preferido para comenzar a utilizar la aplicación.
+- **Node.js** y **Express** (servidor backend)
+- **SQLite** (base de datos local, persistente, binaria)
+- **JavaScript** (frontend y backend)
+- **HTML5** y **CSS3**
+- **Bootstrap 5** y **Tailwind CSS** (diseño y responsividad)
+- **FontAwesome** (iconos)
 
-## 🤝 Contribuciones
+## Estructura del Proyecto
 
-¡Las contribuciones son bienvenidas!  
-Si deseas mejorar alguna funcionalidad o proponer nuevas características, siéntete libre de hacer un fork del repositorio y enviar un pull request.
+```
+justicia-backend/
+├── controllers/         # Lógica de negocio y controladores Express
+├── models/              # Modelos de datos (SQLite)
+├── public/              # Archivos estáticos (HTML, CSS, JS, imágenes)
+│   ├── images/          # Imágenes locales usadas en la web
+│   ├── ...
+├── routes/              # Rutas Express
+├── middleware/          # Middlewares personalizados
+├── server.js            # Punto de entrada del backend
+├── ...
+```
 
-## 📄 Licencia
+## Instalación y Uso
 
-Este proyecto está licenciado bajo la licencia MIT. Consulta el archivo [LICENSE](./LICENSE) para más información.
+1. **Clona el repositorio:**
+   ```bash
+   git clone https://github.com/tuusuario/justicia-digital.git
+   cd justicia-digital/justicia-backend
+   ```
+2. **Instala las dependencias:**
+   ```bash
+   npm install
+   ```
+3. **Inicia el servidor:**
+   ```bash
+   node server.js
+   ```
+4. **Accede a la aplicación:**
+   - Abre tu navegador en `http://localhost:5000` o la URL configurada.
+
+## Notas y Créditos
+
+- Este sistema es una evolución de versiones anteriores, ahora con arquitectura moderna y mejores prácticas.
+- Las imágenes y recursos estáticos están almacenados localmente para minimizar la dependencia de internet.
+- Desarrollado con Node.js, Express, SQLite, Bootstrap, Tailwind y tecnologías web estándar.
+
+---
+
+**Justicia Digital** © 2025. Todos los derechos reservados.
+(Versión mejorada: arquitectura cliente-servidor, Node.js, Express, SQLite, frontend moderno, recursos locales)

@@ -1,0 +1,51 @@
+/* Estilos para mensajes de solo lectura */
+.readonly-message {
+    background-color: #e3f2fd;
+    border: 1px solid #90caf9;
+    color: #1565c0;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.readonly-message i {
+    color: #1976d2;
+}
+
+/* Estilos para elementos deshabilitados */
+input:disabled, 
+textarea:disabled, 
+select:disabled {
+    background-color: #f5f5f5 !important;
+    color: #6c757d !important;
+    cursor: not-allowed !important;
+}
+
+button:disabled {
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+}
+
+/* Ocultar elementos sin permisos */
+.no-permission {
+    display: none !important;
+}
+
+/* Estilo para indicar solo lectura */
+.readonly-mode {
+    position: relative;
+}
+
+.readonly-mode::after {
+    content: '👁️ Solo lectura';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ffc107;
+    color: #000;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: bold;
+}

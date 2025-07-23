@@ -1,0 +1,83 @@
+/* Estilos para la página de actividades - SOLO ELEMENTOS NO MODALES */
+
+/* Tarjetas de documentos */
+.document-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.document-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.document-preview {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #f8f9fa;
+}
+
+.document-thumbnail {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.pdf-icon, .file-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenedor de documentos */
+#document-container {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* Estilos para la vista previa de archivos */
+#document-preview img {
+    max-height: 200px;
+    max-width: 100%;
+}
+
+/* SOLO para el modal de documentos - hacer más ancho usando Bootstrap */
+#documentViewModal .modal-dialog {
+    max-width: 90vw !important;
+    width: 90vw !important;
+}
+
+#documentViewModal .modal-content {
+    height: 80vh !important;
+}
+
+#documentViewModal .modal-body {
+    height: calc(80vh - 120px) !important;
+    padding: 0 !important;
+}
+
+#documentViewModal #document-frame {
+    height: 100% !important;
+    width: 100% !important;
+    border: none !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .document-preview {
+        height: 150px;
+    }
+    
+    #document-container {
+        max-height: 50vh;
+    }
+    
+    #documentViewModal .modal-dialog {
+        max-width: 95vw !important;
+        width: 95vw !important;
+    }
+}

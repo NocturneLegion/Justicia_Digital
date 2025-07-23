@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Documentos - Justicia Digital</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="navbar-styles.css">
+    <link rel="stylesheet" href="footer-styles.css">
+    <link rel="stylesheet" href="actividades.css">
+    <link rel="stylesheet" href="header-actividades.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- CSS personalizados SIN estilos de modales -->
+    <link rel="stylesheet" href="navbar-styles.css">
+    <link rel="stylesheet" href="footer-styles.css">
+    <link rel="stylesheet" href="actividades.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="images/logo.svg" alt="Justicia Digital Logo">
+                    <a href="index.html"><span>Justicia Digital</span></a>
+                </div>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="procedimientos.html">Procedimientos</a></li>
+                        <li><a href="usuarios.html">Gestión de Usuarios</a></li>
+                        <li><a href="AcercaDe.html">Acerca de</a></li>
+                        <li><a href="contactos.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="nav-buttons">
+                    <a href="contactos.html" class="btn btn-primary">Contacto</a>
+                    <a href="#" class="btn btn-secondary" id="login-btn">Iniciar sesión</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container my-4">
+        <h1 class="mb-4">Gestión de Documentos</h1>
+        <div class="mb-3">
+            <p>Documentos del caso: <span id="case-info"></span></p>
+            <a href="procedimientos.html" class="btn btn-secondary">Volver a Procedimientos</a>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                Documentos Escaneados
+            </div>
+            <div class="card-body">
+                <button type="button" class="btn btn-primary" id="add-document-btn" data-bs-toggle="modal" data-bs-target="#addDocumentModal">Agregar Documento</button>
+                <div class="table-responsive mt-3">
+                <table class="table table-striped table-bordered" id="document-table">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Tipo de Documento</th>
+                            <th>Fecha</th>
+                            <th>Descripción</th>
+                            <th>Vista Previa</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="document-table-body">
+                    <tr>
+                        <td>Memorial</td>
+                        <td>2025-04-05</td>
+                        <td>Ejemplo de descripción</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#documentViewModal">
+                                <i class="fas fa-eye me-1"></i>Ver Archivo
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary me-1" data-bs-toggle="modal" data-bs-target="#editDocumentModal"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+
+                    <!-- Mensaje cuando no hay documentos -->
+                    <tr id="empty-row" class="d-none">
+                        <td colspan="5" class="text-muted py-3">No hay documentos disponibles</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Justicia Digital</h3>
+                <p>Estamos a la vanguardia de la justicia digital, utilizando tecnología para luchar por nuestros clientes.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces rápidos</h3>
+                <ul>
+                    <li><a href="procedimientos.html">Procedimientos</a></li>
+                    <li><a href="usuarios.html">Gestión de Usuarios</a></li>
+                    <li><a href="AcercaDe.html">Acerca de</a></li>
+                    <li><a href="contactos.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Justicia Digital. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal de Inicio de Sesión - BOOTSTRAP PURO -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="login-form">
+                        <div class="mb-3">
+                            <label for="login-username" class="form-label">Usuario</label>
+                            <input type="text" class="form-control" id="login-username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="login-password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Ingresar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Agregar Documento - BOOTSTRAP PURO -->
+    <div class="modal fade" id="addDocumentModal" tabindex="-1" aria-labelledby="addDocumentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nuevo Documento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="document-form">
+                        <div class="mb-3">
+                            <label for="document-tipo" class="form-label">Tipo de Documento</label>
+                            <select class="form-select" id="document-tipo" required>
+                                <option value="">Seleccione un tipo</option>
+                                <option value="Memorial">Memorial</option>
+                                <option value="Resolución">Resolución</option>
+                                <option value="Notificación">Notificación</option>
+                                <option value="Citación">Citación</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="document-fecha" class="form-label">Fecha del Documento</label>
+                            <input type="date" class="form-control" id="document-fecha" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="document-descripcion" class="form-label">Descripción del Documento</label>
+                            <textarea class="form-control" id="document-descripcion" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="document-file" class="form-label">Archivo Escaneado</label>
+                            <input type="file" class="form-control" id="document-file" accept="image/jpeg,image/png,application/pdf" required>
+                            <small class="form-text text-muted">Formatos aceptados: imágenes (JPG, PNG) y PDF. Máximo 5MB.</small>
+                        </div>
+                        <!-- Vista previa del archivo -->
+                        <div class="mb-3">
+                            <img id="preview-image" class="img-fluid d-none" style="max-height: 200px;" alt="Vista previa">
+                            <iframe id="preview-pdf" class="d-none" style="width: 100%; height: 200px;" frameborder="0"></iframe>
+                        </div>
+                        <input type="hidden" id="document-id">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Editar Documento - BOOTSTRAP PURO -->
+    <div class="modal fade" id="editDocumentModal" tabindex="-1" aria-labelledby="editDocumentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Documento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-document-form">
+                        <div class="mb-3">
+                            <label for="edit-document-tipo" class="form-label">Tipo de Documento</label>
+                            <select class="form-select" id="edit-document-tipo" required>
+                                <option value="">Seleccione un tipo</option>
+                                <option value="Memorial">Memorial</option>
+                                <option value="Resolución">Resolución</option>
+                                <option value="Notificación">Notificación</option>
+                                <option value="Citación">Citación</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-document-fecha" class="form-label">Fecha del Documento</label>
+                            <input type="date" class="form-control" id="edit-document-fecha" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-document-descripcion" class="form-label">Descripción del Documento</label>
+                            <textarea class="form-control" id="edit-document-descripcion" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmación - BOOTSTRAP PURO -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmar Eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Está seguro que desea eliminar este documento?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirm-delete">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Visualización de Documento - BOOTSTRAP PURO ANCHO -->
+    <div class="modal fade" id="documentViewModal" tabindex="-1" aria-labelledby="documentViewModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Vista Previa del Documento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <iframe id="document-frame" frameborder="0" style="width: 100%; height: 500px;">
+                        <p>Aquí se mostraría el documento. El modal ocupa 90% del ancho de la pantalla.</p>
+                    </iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-2"></i>Cerrar Documento
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SOLO Bootstrap JavaScript - SIN JavaScript personalizado para modales -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Scripts de funcionalidad (sin modales) -->
+    <script>
+    // Función simple para cargar documento en el modal
+    document.addEventListener('DOMContentLoaded', function() {
+        // Cuando se abra el modal de vista previa
+        const documentViewModal = document.getElementById('documentViewModal');
+        documentViewModal.addEventListener('show.bs.modal', function (event) {
+            const frame = document.getElementById('document-frame');
+            // Simular carga de documento
+            frame.src = 'data:text/html,<div style="padding:50px;text-align:center;"><h1>Documento de Ejemplo</h1><p>Aquí se mostraría el contenido del documento PDF o imagen</p><p>El modal ocupa 90% del ancho de la pantalla</p></div>';
+        });
+    });
+
+    function previewFile(nombre, tipo, id) {
+        const frame = document.getElementById('document-frame');
+        if (!frame) return;
+
+        const token = sessionStorage.getItem('token');
+        if (!token) {
+            alert("No tienes sesión iniciada.");
+            return;
+        }
+
+        fetch(`http://localhost:5000/api/documentos/${id}/file`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Error al obtener el archivo");
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            const url = URL.createObjectURL(blob);
+            if (tipo.startsWith('image/')) {
+                frame.src = url;
+            } else if (tipo === 'application/pdf') {
+                frame.src = url;
+            } else {
+                alert("Formato no compatible");
+                frame.src = '';
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert("No se pudo cargar el archivo. Verifica que tengas permisos.");
+            frame.src = '';
+        });
+    }
+    </script>
+    
+    <!-- Scripts de la aplicación -->
+    <script src="session-manager.js"></script>
+    <script src="navbar-session.js"></script>
+    <script src="permissions-manager.js"></script>
+    <script src="auth-global.js"></script>
+    <script src="actividades.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+/* Estilo púrpura para el botón de cerrar sesión */
+.btn-logout-purple {
+    background-color: #6f42c1;
+    color: white;
+    border: 1px solid #6f42c1;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-logout-purple:hover {
+    background-color: #5a2d91;
+    border-color: #5a2d91;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(111, 66, 193, 0.3);
+}
+
+.btn-logout-purple:active {
+    background-color: #4e2679;
+    border-color: #4e2679;
+    transform: translateY(0);
+}
+
+.btn-logout-purple:focus {
+    box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.25);
+    outline: none;
+}
+
+/* Asegurar que el logo tenga el estilo correcto */
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: #333;
+    text-decoration: none;
+}
+
+.logo img {
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.logo span {
+    color: #333;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Estilos para el menú de navegación */
+.nav-links ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links ul li {
+    margin: 0 15px;
+}
+
+.nav-links ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links ul li a:hover {
+    color: #1a73e8;
+}
+
+/* Estilos para los botones de navegación */
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.nav-buttons .btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    display: inline-block;
+}
+
+.nav-buttons .btn-primary {
+    background-color: #1a73e8;
+    color: white;
+    border: 1px solid #1a73e8;
+}
+
+.nav-buttons .btn-primary:hover {
+    background-color: #1557b0;
+    border-color: #1557b0;
+    color: white;
+}
+
+.nav-buttons .btn-secondary {
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.nav-buttons .btn-secondary:hover {
+    background-color: #f5f5f5;
+    color: #333;
+}
