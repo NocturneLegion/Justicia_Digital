@@ -26,6 +26,13 @@
                     <img src="images/logo.svg" alt="Justicia Digital Logo">
                     <a href="index.html"><span>Justicia Digital</span></a>
                 </div>
+                <div class="mobile-actions">
+                    <a href="contactos.html" class="btn btn-primary">Contacto</a>
+                    <a href="#" class="btn btn-secondary" id="login-btn">Iniciar sesión</a>
+                    <button class="menu-toggle" aria-label="Abrir menú" onclick="document.body.classList.toggle('menu-open')">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
                 <div class="nav-links">
                     <ul>
                         <li><a href="procedimientos.html">Procedimientos</a></li>
@@ -33,10 +40,6 @@
                         <li><a href="AcercaDe.html">Acerca de</a></li>
                         <li><a href="contactos.html">Contacto</a></li>
                     </ul>
-                </div>
-                <div class="nav-buttons">
-                    <a href="contactos.html" class="btn btn-primary">Contacto</a>
-                    <a href="#" class="btn btn-secondary" id="login-btn">Iniciar sesión</a>
                 </div>
             </nav>
         </div>
@@ -298,7 +301,7 @@
             return;
         }
 
-        fetch(`http://localhost:5000/api/documentos/${id}/file`, {
+        fetch(`http://192.168.1.17:5000/api/documentos/${id}/file`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -334,5 +337,87 @@
     <script src="permissions-manager.js"></script>
     <script src="auth-global.js"></script>
     <script src="actividades.js"></script>
+<style>
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+.mobile-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+@media (max-width: 900px) {
+    .mobile-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .menu-toggle {
+        display: block;
+    }
+    .nav-links {
+        display: none;
+    }
+    body.menu-open .nav-links {
+        display: block;
+        background: #fff;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        z-index: 100;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        padding-bottom: 1rem;
+    }
+    .nav-links ul {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 1.5rem;
+    }
+    .nav-links ul li {
+        margin: 1rem 0;
+    }
+    .nav-buttons, .nav-buttons-mobile-hide {
+        display: none !important;
+    }
+}
+@media (min-width: 901px) {
+    .mobile-actions {
+        display: none;
+    }
+    .nav-buttons {
+        display: flex;
+        gap: 0.5rem;
+    }
+}
+@media (max-width: 600px) {
+    .logo span {
+        font-size: 1.1rem;
+    }
+    .mobile-actions .btn {
+        font-size: 0.95rem;
+        padding: 0.4rem 0.7rem;
+    }
+}
+</style>
+<script>
+window.addEventListener('resize', function() {
+    if(window.innerWidth > 900) document.body.classList.remove('menu-open');
+});
+document.addEventListener('click', function(e) {
+    if(document.body.classList.contains('menu-open')) {
+        const nav = document.querySelector('nav');
+        if(nav && !nav.contains(e.target)) {
+            document.body.classList.remove('menu-open');
+        }
+    }
+});
+</script>
 </body>
 </html>

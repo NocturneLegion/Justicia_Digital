@@ -35,7 +35,7 @@
         
         try {
             // Verificar que el token sea válido
-            const response = await fetch('http://localhost:5000/api/auth/verify', {
+            const response = await fetch('http://192.168.1.17:5000/api/auth/verify', {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             

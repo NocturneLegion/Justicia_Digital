@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return [];
         }
         try {
-            const response = await fetch('http://localhost:5000/api/casos', {
+            const response = await fetch('http://192.168.1.17:5000/api/casos', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const saveCases = async (cases) => {
         const token = sessionStorage.getItem('token');
         try {
-            const response = await fetch('http://localhost:5000/api/casos/bulk', {
+            const response = await fetch('http://192.168.1.17:5000/api/casos/bulk', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -454,7 +454,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const deleteCase = async (caseId) => {
         const token = sessionStorage.getItem('token');
         try {
-            const response = await fetch(`http://localhost:5000/api/casos/${caseId}`, {
+            const response = await fetch(`http://192.168.1.17:5000/api/casos/${caseId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -683,7 +683,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Configurar request
                 const method = isEditing ? 'PUT' : 'POST';
-                const url = isEditing ? `http://localhost:5000/api/casos/${caseId}` : 'http://localhost:5000/api/casos';
+                const url = isEditing ? `http://192.168.1.17:5000/api/casos/${caseId}` : 'http://192.168.1.17:5000/api/casos';
 
                 console.log(`🌐 Enviando ${method} a ${url}`);
 

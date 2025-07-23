@@ -20,7 +20,7 @@ const upload = multer({ storage });
 
 // Configuración de CORS
 const corsOptions = {
-  origin: ['http://localhost:8080', 'http://127.0.0.1:8080'],
+  origin: ['http://192.168.1.17:8080', 'http://127.0.0.1:8080'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Authorization', 'Content-Type'],
   credentials: true
@@ -49,5 +49,5 @@ sequelize.authenticate()
   .catch(err => console.error('Error al conectar a la base de datos:', err));
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => console.log(`Servidor corriendo en puerto ${PORT}`));
 console.log('JWT_SECRET:', process.env.JWT_SECRET || '❌ NO ESTÁ DEFINIDA');

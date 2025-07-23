@@ -62,8 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             try {
                 const url = documentId ?
-                    `http://localhost:5000/api/documentos/${documentId}` :
-                    'http://localhost:5000/api/documentos';
+                    `http://192.168.1.17:5000/api/documentos/${documentId}` :
+                    'http://192.168.1.17:5000/api/documentos';
                 const method = documentId ? 'PUT' : 'POST';
                 const response = await fetch(url, {
                     method: method,
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:5000/api/documentos?caso_id=${casoId}`, {
+            const response = await fetch(`http://192.168.1.17:5000/api/documentos?caso_id=${casoId}`, {
                 headers: {
                     'Authorization': `Bearer ${sessionStorage.getItem('token')}`
                 }
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        fetch(`http://localhost:5000/api/documentos/${id}/file`, {
+        fetch(`http://192.168.1.17:5000/api/documentos/${id}/file`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const documentId = button.dataset.id;
             
             try {
-                const response = await fetch(`http://localhost:5000/api/documentos/${documentId}`, {
+                const response = await fetch(`http://192.168.1.17:5000/api/documentos/${documentId}`, {
                     headers: {
                         'Authorization': `Bearer ${sessionStorage.getItem('token')}`
                     }
@@ -241,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         formData.append('nurej', nurej);
 
                         try {
-                            const response = await fetch(`http://localhost:5000/api/documentos/${documentId}`, {
+                            const response = await fetch(`http://192.168.1.17:5000/api/documentos/${documentId}`, {
                                 method: 'PUT',
                                 headers: {
                                     'Authorization': `Bearer ${sessionStorage.getItem('token')}`
@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             newConfirmDeleteBtn.addEventListener('click', async function() {
                 try {
-                    const response = await fetch(`http://localhost:5000/api/documentos/${documentId}`, {
+                    const response = await fetch(`http://192.168.1.17:5000/api/documentos/${documentId}`, {
                         method: 'DELETE',
                         headers: {
                             'Authorization': `Bearer ${sessionStorage.getItem('token')}`

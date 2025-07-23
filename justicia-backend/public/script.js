@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             try {
                 // console.log('🔍 [SCRIPT.JS] Enviando credenciales al servidor...');
-                const response = await fetch('http://localhost:5000/api/auth/login', {
+                const response = await fetch('http://192.168.1.17:5000/api/auth/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username, password })
