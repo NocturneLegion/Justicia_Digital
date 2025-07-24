@@ -13,14 +13,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Sombra leve para el header en la página Usuarios */
+        header {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+            position: relative;
+            z-index: 10;
+        }
+    </style>
 </head>
 <body>
-    <header style="box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);">
+    <header>
         <div class="container">
             <nav>
                 <div class="logo">
                     <img src="images/logo.svg" alt="Justicia Digital Logo">
                     <a href="index.html"><span>Justicia Digital</span></a>
+                </div>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="procedimientos.html">Procedimientos</a></li>
+                        <li><a href="usuarios.html">Gestión de Usuarios</a></li>
+                        <li><a href="AcercaDe.html">Acerca de</a></li>
+                        <li><a href="contactos.html">Contacto</a></li>
+                    </ul>
                 </div>
                 <div class="mobile-actions">
                     <a href="contactos.html" class="btn btn-primary">Contacto</a>
@@ -28,14 +44,6 @@
                     <button class="menu-toggle" aria-label="Abrir menú" onclick="document.body.classList.toggle('menu-open')">
                         <i class="fas fa-bars"></i>
                     </button>
-                </div>
-                <div class="nav-links">
-                    <ul>
-                        <li><a href="procedimientos.html">Procedimientos</a></li>
-                        <li><a href="usuarios.html" class="active">Gestión de Usuarios</a></li>
-                        <li><a href="AcercaDe.html">Acerca de</a></li>
-                        <li><a href="contactos.html">Contacto</a></li>
-                    </ul>
                 </div>
             </nav>
         </div>
@@ -69,6 +77,15 @@
                         </thead>
                         <tbody id="user-table-body">
                             <!-- Los usuarios se cargarán dinámicamente aquí -->
+                            <tr class="empty-state" id="empty-users-row" style="display: none;">
+                                <td colspan="7">
+                                    <div class="empty-state">
+                                        <i class="fas fa-users"></i>
+                                        <h3>No hay usuarios registrados</h3>
+                                        <p>Comienza agregando el primer usuario al sistema</p>
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -197,6 +214,7 @@
         </div>
     </div>
 
+    <script src="config.js"></script>
     <script src="navbar-session.js"></script>
 <script src="permissions-manager.js"></script>
 <script src="script.js"></script>

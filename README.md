@@ -61,7 +61,7 @@ justicia-backend/
    node server.js
    ```
 4. **Accede a la aplicación:**
-   - Abre tu navegador en `http://192.168.1.17:5000` o la URL configurada.
+   - Abre tu navegador en `http://192.168.1.12:5000` o la URL configurada.
 
 ## Notas y Créditos
 

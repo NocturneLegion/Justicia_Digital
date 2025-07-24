@@ -1,5 +1,22 @@
 /* Estilos específicos para la página de procedimientos */
 
+/* Espaciado mejorado para el main */
+.page-header {
+    padding-top: 3rem !important;
+    padding-bottom: 2rem !important;
+}
+
+.content-section {
+    padding-top: 2rem !important;
+    padding-bottom: 3rem !important;
+}
+
+/* Espaciado adicional para la paginación */
+.pagination {
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+}
+
 /* Estilos para los estados de los casos */
 .status-activo {
     background-color: #4CAF50;
@@ -61,6 +78,105 @@
     text-overflow: ellipsis;
 }
 
+/* Estilos para los botones de acción en la tabla */
+.table td {
+    vertical-align: middle;
+    padding: 12px 8px;
+}
+
+/* Contenedor de botones de acción */
+.table td .d-flex {
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+/* Estilos específicos para botones de editar y eliminar */
+.btn-edit,
+.btn-delete {
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    border-radius: 4px !important;
+    white-space: nowrap !important;
+    min-width: auto !important;
+    height: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    border: 1px solid transparent !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn-edit {
+    color: #0d6efd !important;
+    border-color: #0d6efd !important;
+    background-color: transparent !important;
+}
+
+.btn-edit:hover {
+    color: #fff !important;
+    background-color: #0d6efd !important;
+    border-color: #0d6efd !important;
+}
+
+.btn-delete {
+    color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    background-color: transparent !important;
+}
+
+.btn-delete:hover {
+    color: #fff !important;
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+}
+
+/* Iconos en los botones */
+.btn-edit i,
+.btn-delete i {
+    margin-right: 4px;
+    font-size: 11px;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .btn-edit,
+    .btn-delete {
+        padding: 4px 8px !important;
+        font-size: 11px !important;
+    }
+    
+    .btn-edit i,
+    .btn-delete i {
+        margin-right: 2px;
+        font-size: 10px;
+    }
+    
+    /* Ocultar texto en pantallas muy pequeñas, solo mostrar iconos */
+    @media (max-width: 576px) {
+        .btn-edit .btn-text,
+        .btn-delete .btn-text {
+            display: none;
+        }
+        
+        .btn-edit i,
+        .btn-delete i {
+            margin-right: 0;
+        }
+    }
+}
+
+/* Asegurar que la columna de acciones tenga un ancho fijo */
+.table th:last-child,
+.table td:last-child {
+    width: 180px;
+    min-width: 180px;
+    text-align: center;
+}
+
 /* Estilos para el modal de caso */
 #case-descripcion {
     resize: vertical;
@@ -94,4 +210,595 @@
 
 .select-with-button .btn-icon:hover {
     background-color: #3a5bd9;
+}
+
+/* 🎨 EFECTOS MODERNOS PARA LA TABLA DE PROCEDIMIENTOS */
+
+/* Contenedor de tabla mejorado con efectos modernos */
+.table-container {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e9ecef;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+/* Tabla principal con efectos modernos */
+.table {
+    margin-bottom: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 14px;
+    background: white;
+}
+
+/* Header de tabla con gradiente moderno - CORREGIDO */
+.table thead.table-primary,
+.table thead.table-primary th,
+.table thead th {
+    background: #1a73e8 !important;
+    background-image: linear-gradient(135deg, #1a73e8, #4285f4) !important;
+    color: white !important;
+    border: none !important;
+}
+
+.table thead th {
+    padding: 18px 16px !important;
+    text-align: left;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    border: none !important;
+    position: relative;
+    color: white !important;
+    background: #1a73e8 !important;
+    background-image: linear-gradient(135deg, #1a73e8, #4285f4) !important;
+}
+
+.table thead th::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.table thead th:last-child::after {
+    display: none;
+}
+
+/* Filas de tabla con efectos hover modernos */
+.table tbody tr {
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #f1f3f4;
+    position: relative;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa !important;
+    transform: scale(1.01);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.table tbody td {
+    padding: 16px !important;
+    vertical-align: middle;
+    border: none !important;
+    color: #495057;
+    position: relative;
+}
+
+.table tbody td:first-child {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Estados de casos con gradientes modernos */
+.status-activo {
+    background: linear-gradient(135deg, #4CAF50, #66BB6A) !important;
+    color: white !important;
+    padding: 6px 12px !important;
+    border-radius: 20px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    display: inline-block !important;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3) !important;
+}
+
+.status-pendiente {
+    background: linear-gradient(135deg, #FFC107, #FFD54F) !important;
+    color: #333 !important;
+    padding: 6px 12px !important;
+    border-radius: 20px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    display: inline-block !important;
+    box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3) !important;
+}
+
+.status-archivado {
+    background: linear-gradient(135deg, #9E9E9E, #BDBDBD) !important;
+    color: white !important;
+    padding: 6px 12px !important;
+    border-radius: 20px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    display: inline-block !important;
+    box-shadow: 0 2px 8px rgba(158, 158, 158, 0.3) !important;
+}
+
+.status-concluido {
+    background: linear-gradient(135deg, #2196F3, #42A5F5) !important;
+    color: white !important;
+    padding: 6px 12px !important;
+    border-radius: 20px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    display: inline-block !important;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3) !important;
+}
+
+/* Botones de acción modernos con efectos avanzados */
+.btn-edit,
+.btn-delete {
+    padding: 8px 16px !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    border-radius: 8px !important;
+    white-space: nowrap !important;
+    min-width: auto !important;
+    height: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    border: 1px solid transparent !important;
+    transition: all 0.3s ease !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.3px !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Efecto de brillo para botones de acción */
+.btn-edit::before,
+.btn-delete::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+    z-index: 1;
+}
+
+.btn-edit:hover::before,
+.btn-delete:hover::before {
+    left: 100%;
+}
+
+/* Botón Editar con gradiente moderno */
+.btn-edit {
+    background: linear-gradient(135deg, #17a2b8, #20c997) !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(23, 162, 184, 0.3) !important;
+}
+
+.btn-edit:hover {
+    background: linear-gradient(135deg, #138496, #1e7e34) !important;
+    color: white !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 15px rgba(23, 162, 184, 0.4) !important;
+}
+
+.btn-edit:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 8px rgba(23, 162, 184, 0.3) !important;
+}
+
+/* Botón Eliminar con gradiente moderno */
+.btn-delete {
+    background: linear-gradient(135deg, #dc3545, #e74c3c) !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3) !important;
+}
+
+.btn-delete:hover {
+    background: linear-gradient(135deg, #c82333, #c0392b) !important;
+    color: white !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4) !important;
+}
+
+.btn-delete:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3) !important;
+}
+
+/* Iconos en los botones con posición relativa */
+.btn-edit i,
+.btn-delete i {
+    margin-right: 4px;
+    font-size: 11px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Texto de botones con posición relativa */
+.btn-edit .btn-text,
+.btn-delete .btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+/* Controles de búsqueda modernos - CORREGIDO */
+.input-group {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    display: flex;
+    align-items: stretch;
+}
+
+.input-group .form-select,
+.input-group .form-control {
+    border: 2px solid #e9ecef !important;
+    border-radius: 0 !important;
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+    transition: all 0.3s ease !important;
+    background-color: #f8f9fa !important;
+    flex: 1;
+}
+
+.input-group .form-select:focus,
+.input-group .form-control:focus {
+    outline: none !important;
+    border-color: #1a73e8 !important;
+    background-color: white !important;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1) !important;
+}
+
+.input-group .btn {
+    border-radius: 0 8px 8px 0 !important;
+    padding: 12px 20px !important;
+    background: #1a73e8 !important;
+    background-image: linear-gradient(135deg, #1a73e8, #4285f4) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    min-width: 60px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.input-group .btn:hover {
+    background: #1557b0 !important;
+    background-image: linear-gradient(135deg, #1557b0, #3367d6) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Botón "Nuevo Caso" moderno */
+#add-case-btn {
+    background: linear-gradient(135deg, #28a745, #34ce57) !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+#add-case-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+    z-index: 1;
+}
+
+#add-case-btn:hover::before {
+    left: 100%;
+}
+
+#add-case-btn:hover {
+    background: linear-gradient(135deg, #218838, #28a745) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4) !important;
+}
+
+#add-case-btn i {
+    position: relative;
+    z-index: 2;
+}
+
+/* Paginación moderna */
+.pagination {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 15px !important;
+    padding: 2rem 0 !important;
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid #e9ecef !important;
+}
+
+.pagination button {
+    background: white !important;
+    color: #1a73e8 !important;
+    border: 2px solid #1a73e8 !important;
+    border-radius: 8px !important;
+    padding: 10px 16px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+.pagination button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #1a73e8, #4285f4) !important;
+    color: white !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 15px rgba(26, 115, 232, 0.3) !important;
+}
+
+.pagination button:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+}
+
+#page-info {
+    font-weight: 600 !important;
+    color: #495057 !important;
+    padding: 0 20px !important;
+    font-size: 14px !important;
+}
+
+/* Animaciones de entrada para filas */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.table tbody tr {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* Responsive mejorado */
+@media (max-width: 768px) {
+    .btn-edit,
+    .btn-delete {
+        padding: 6px 12px !important;
+        font-size: 11px !important;
+    }
+    
+    .btn-edit i,
+    .btn-delete i {
+        margin-right: 2px;
+        font-size: 10px;
+    }
+    
+    .table thead th {
+        padding: 12px 8px !important;
+        font-size: 11px !important;
+    }
+    
+    .table tbody td {
+        padding: 12px 8px !important;
+    }
+    
+    /* Ocultar texto en pantallas muy pequeñas, solo mostrar iconos */
+    @media (max-width: 576px) {
+        .btn-edit .btn-text,
+        .btn-delete .btn-text {
+            display: none;
+        }
+        
+        .btn-edit i,
+        .btn-delete i {
+            margin-right: 0;
+        }
+    }
+}
+
+/* 🚫 OCULTAR BARRAS DESPLAZADORAS (SCROLLBARS) */
+
+/* Ocultar scrollbars en contenedores de tabla */
+.table-responsive,
+.table-container,
+.table-responsive-sm,
+.table-responsive-md,
+.table-responsive-lg,
+.table-responsive-xl,
+.table-responsive-xxl {
+    /* Firefox */
+    scrollbar-width: none;
+    /* Internet Explorer y Edge */
+    -ms-overflow-style: none;
+}
+
+/* WebKit (Chrome, Safari, Edge moderno) */
+.table-responsive::-webkit-scrollbar,
+.table-container::-webkit-scrollbar,
+.table-responsive-sm::-webkit-scrollbar,
+.table-responsive-md::-webkit-scrollbar,
+.table-responsive-lg::-webkit-scrollbar,
+.table-responsive-xl::-webkit-scrollbar,
+.table-responsive-xxl::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+/* Ocultar scrollbars en cualquier div que contenga tablas */
+div[class*="table"]::-webkit-scrollbar,
+.overflow-auto::-webkit-scrollbar,
+.overflow-scroll::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+div[class*="table"] {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.overflow-auto,
+.overflow-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Asegurar que el contenido siga siendo desplazable pero sin barras visibles */
+.table-responsive {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* Estilo adicional para mantener funcionalidad en móviles */
+@media (max-width: 768px) {
+    .table-responsive {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+    }
+}
+
+/* 🔍 CORRECCIÓN ESPECÍFICA PARA EL BOTÓN DE BÚSQUEDA - COMPLETO */
+
+/* Corregir altura y alineación del input-group */
+.input-group {
+    height: 48px !important;
+    align-items: stretch !important;
+    display: flex !important;
+}
+
+.input-group .form-select,
+.input-group .form-control {
+    height: 48px !important;
+    border-radius: 8px 0 0 8px !important;
+    border-right: none !important;
+    padding: 12px 16px !important;
+    line-height: 1.4 !important;
+    border: 2px solid #e9ecef !important;
+    border-right: none !important;
+}
+
+/* Botón de búsqueda completamente corregido */
+.input-group .btn {
+    border-radius: 0 8px 8px 0 !important;
+    padding: 0 !important;
+    background: #1a73e8 !important;
+    background-image: linear-gradient(135deg, #1a73e8, #4285f4) !important;
+    border: 2px solid #1a73e8 !important;
+    border-left: none !important;
+    color: white !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    min-width: 48px !important;
+    width: 48px !important;
+    height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 16px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+}
+
+.input-group .btn i {
+    font-size: 16px !important;
+    position: relative !important;
+    z-index: 2 !important;
+    margin: 0 !important;
+}
+
+.input-group .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+    z-index: 1;
+}
+
+.input-group .btn:hover::before {
+    left: 100%;
+}
+
+.input-group .btn:hover {
+    background: #1557b0 !important;
+    background-image: linear-gradient(135deg, #1557b0, #3367d6) !important;
+    border-color: #1557b0 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3) !important;
+}
+
+.input-group .btn:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 6px rgba(26, 115, 232, 0.2) !important;
+}
+
+.input-group .btn:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.25) !important;
+}
+
+/* Asegurar que no haya elementos adicionales interfiriendo */
+.input-group-text {
+    display: none !important;
+}
+
+.input-group-append {
+    display: flex !important;
+    align-items: stretch !important;
 }

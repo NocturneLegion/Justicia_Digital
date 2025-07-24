@@ -1,0 +1,94 @@
+/* 🔍 CORRECCIÓN ESPECÍFICA PARA EL BOTÓN DE BÚSQUEDA */
+
+/* Corregir altura y alineación del input-group */
+.input-group {
+    height: 48px !important;
+    align-items: stretch !important;
+    display: flex !important;
+}
+
+.input-group .form-select,
+.input-group .form-control {
+    height: 48px !important;
+    border-radius: 8px 0 0 8px !important;
+    border-right: none !important;
+    padding: 12px 16px !important;
+    line-height: 1.4 !important;
+    border: 2px solid #e9ecef !important;
+    border-right: none !important;
+}
+
+/* Botón de búsqueda completamente corregido */
+.input-group .btn {
+    border-radius: 0 8px 8px 0 !important;
+    padding: 0 !important;
+    background: #1a73e8 !important;
+    background-image: linear-gradient(135deg, #1a73e8, #4285f4) !important;
+    border: 2px solid #1a73e8 !important;
+    border-left: none !important;
+    color: white !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    min-width: 48px !important;
+    width: 48px !important;
+    height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 16px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+}
+
+.input-group .btn i {
+    font-size: 16px !important;
+    position: relative !important;
+    z-index: 2 !important;
+    margin: 0 !important;
+}
+
+.input-group .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+    z-index: 1;
+}
+
+.input-group .btn:hover::before {
+    left: 100%;
+}
+
+.input-group .btn:hover {
+    background: #1557b0 !important;
+    background-image: linear-gradient(135deg, #1557b0, #3367d6) !important;
+    border-color: #1557b0 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3) !important;
+}
+
+.input-group .btn:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 6px rgba(26, 115, 232, 0.2) !important;
+}
+
+.input-group .btn:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.25) !important;
+}
+
+/* Asegurar que no haya elementos adicionales interfiriendo */
+.input-group-text {
+    display: none !important;
+}
+
+.input-group-append {
+    display: flex !important;
+    align-items: stretch !important;
+}

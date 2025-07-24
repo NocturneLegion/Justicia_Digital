@@ -4,6 +4,10 @@
 (function() {
     'use strict';
     
+    // Cargar configuración de backend
+    if (typeof BACKEND_URL === 'undefined') {
+        alert('No se encontró config.js o la variable BACKEND_URL. Verifica la configuración.');
+    }
     // console.log('🔍 [AUTH-GLOBAL.JS] Iniciando script de autenticación global - SESIONES NUNCA SE CIERRAN...');
     
     // Verificar si el usuario está autenticado
@@ -35,7 +39,7 @@
         
         try {
             // Verificar que el token sea válido
-            const response = await fetch('http://192.168.1.17:5000/api/auth/verify', {
+            const response = await fetch(`${BACKEND_URL}/api/auth/verify`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             

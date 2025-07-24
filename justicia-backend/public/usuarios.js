@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
     
     try {
-        const response = await fetch('http://192.168.1.17:5000/api/auth/verify', {
+        const response = await fetch('http://192.168.1.12:5000/api/auth/verify', {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         try {
-            const res = await fetch('http://192.168.1.17:5000/api/auth/verify', {
+            const res = await fetch('http://192.168.1.12:5000/api/auth/verify', {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
 
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const getUsers = async () => {
         try {
-            const response = await fetch('http://192.168.1.17:5000/api/usuarios', {
+            const response = await fetch('http://192.168.1.12:5000/api/usuarios', {
                 headers: {
                     'Authorization': `Bearer ${sessionStorage.getItem('token') || ''}`
                 }
@@ -131,12 +131,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     <td>${user.nombre || 'Sin nombre'}</td>
                     <td>${user.username}</td>
                     <td>${user.email}</td>
-                    <td>${translateRole(user.rol)}</td>
-                    <td><span class="status-${estadoLower}">${estadoDisplay}</span></td>
+                    <td><span class="role-badge role-${user.rol}">${translateRole(user.rol)}</span></td>
+                    <td><span class="status-badge status-${estadoLower}">${estadoDisplay}</span></td>
                     <td>
                         <div class="action-buttons">
-                            <button class="btn-icon btn-edit" data-id="${user.id}" title="Editar"><i class="fas fa-edit"></i></button>
-                            <button class="btn-icon btn-delete" data-id="${user.id}" title="Eliminar"><i class="fas fa-trash"></i></button>
+                            <button class="btn btn-sm btn-edit" data-id="${user.id}" title="Editar"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-sm btn-delete" data-id="${user.id}" title="Eliminar"><i class="fas fa-trash"></i></button>
                         </div>
                     </td>
                 `;
@@ -151,7 +151,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const roles = {
             'admin': 'Administrador',
             'abogado': 'Abogado',
-            'usuario': 'Usuario'
+            'usuario': 'Usuario',
+            'user': 'Usuario'
         };
         return roles[role] || role;
     };
@@ -222,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const deleteUser = async (userId) => {
         try {
-            const response = await fetch(`http://192.168.1.17:5000/api/usuarios/${userId}`, {
+            const response = await fetch(`http://192.168.1.12:5000/api/usuarios/${userId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${sessionStorage.getItem('token') || ''}`
@@ -300,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // console.log('Enviando datos al backend:', userData);
             let response;
             if (userId) {
-                response = await fetch(`http://192.168.1.17:5000/api/usuarios/${userId}`, {
+                response = await fetch(`http://192.168.1.12:5000/api/usuarios/${userId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -309,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     body: JSON.stringify(userData)
                 });
             } else {
-                response = await fetch('http://192.168.1.17:5000/api/usuarios', {
+                response = await fetch('http://192.168.1.12:5000/api/usuarios', {
                     method: 'POST',
                     headers: {
                         'Authorization': `Bearer ${sessionStorage.getItem('token') || ''}`,

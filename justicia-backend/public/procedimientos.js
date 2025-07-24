@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return [];
         }
         try {
-            const response = await fetch('http://192.168.1.17:5000/api/casos', {
+            const response = await fetch('http://192.168.1.12:5000/api/casos', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const saveCases = async (cases) => {
         const token = sessionStorage.getItem('token');
         try {
-            const response = await fetch('http://192.168.1.17:5000/api/casos/bulk', {
+            const response = await fetch('http://192.168.1.12:5000/api/casos/bulk', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -197,8 +197,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     <td>${caso.municipio || '-'}</td>
                     <td>
                         <div class="d-flex gap-2 justify-content-center">
-                            <button class="btn btn-sm btn-outline-primary btn-edit" data-id="${caso.id}" title="Editar"><i class="fas fa-edit me-1"></i>Editar</button>
-                            <button class="btn btn-sm btn-outline-danger btn-delete" data-id="${caso.id}" title="Eliminar"><i class="fas fa-trash me-1"></i>Eliminar</button>
+                            <button class="btn btn-sm btn-outline-primary btn-edit" data-id="${caso.id}" title="Editar">
+                                <i class="fas fa-edit"></i><span class="btn-text">Editar</span>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger btn-delete" data-id="${caso.id}" title="Eliminar">
+                                <i class="fas fa-trash"></i><span class="btn-text">Eliminar</span>
+                            </button>
                         </div>
                     </td>
                 `;
@@ -454,7 +458,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const deleteCase = async (caseId) => {
         const token = sessionStorage.getItem('token');
         try {
-            const response = await fetch(`http://192.168.1.17:5000/api/casos/${caseId}`, {
+            const response = await fetch(`http://192.168.1.12:5000/api/casos/${caseId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -683,7 +687,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Configurar request
                 const method = isEditing ? 'PUT' : 'POST';
-                const url = isEditing ? `http://192.168.1.17:5000/api/casos/${caseId}` : 'http://192.168.1.17:5000/api/casos';
+                const url = isEditing ? `http://192.168.1.12:5000/api/casos/${caseId}` : 'http://192.168.1.12:5000/api/casos';
 
                 console.log(`🌐 Enviando ${method} a ${url}`);
 

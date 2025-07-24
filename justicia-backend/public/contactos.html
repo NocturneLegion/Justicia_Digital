@@ -24,15 +24,29 @@
         .contact-form:hover {
             transform: translateY(-2px);
         }
+        /* Sombra leve para el header en la página Contacto */
+        header {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+            position: relative;
+            z-index: 10;
+        }
     </style>
 </head>
 <body>
-    <header style="box-shadow: 0 6px 24px rgba(0,0,0,0.12); background: #fff; position: relative; z-index: 10;">
+    <header>
         <div class="container">
             <nav>
                 <div class="logo">
                     <img src="images/logo.svg" alt="Justicia Digital Logo">
                     <a href="index.html"><span>Justicia Digital</span></a>
+                </div>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="procedimientos.html">Procedimientos</a></li>
+                        <li><a href="usuarios.html">Gestión de Usuarios</a></li>
+                        <li><a href="AcercaDe.html">Acerca de</a></li>
+                        <li><a href="contactos.html">Contacto</a></li>
+                    </ul>
                 </div>
                 <div class="mobile-actions">
                     <a href="contactos.html" class="btn btn-primary">Contacto</a>
@@ -40,14 +54,6 @@
                     <button class="menu-toggle" aria-label="Abrir menú" onclick="document.body.classList.toggle('menu-open')">
                         <i class="fas fa-bars"></i>
                     </button>
-                </div>
-                <div class="nav-links">
-                    <ul>
-                        <li><a href="procedimientos.html">Procedimientos</a></li>
-                        <li><a href="usuarios.html">Gestión de Usuarios</a></li>
-                        <li><a href="AcercaDe.html">Acerca de</a></li>
-                        <li><a href="contactos.html" class="active">Contacto</a></li>
-                    </ul>
                 </div>
             </nav>
         </div>

@@ -45,25 +45,153 @@
     max-width: 100%;
 }
 
-/* SOLO para el modal de documentos - hacer más ancho usando Bootstrap */
-#documentViewModal .modal-dialog {
-    max-width: 90vw !important;
-    width: 90vw !important;
+/* Estilos para el modal de vista previa de documentos - FORZAR ANCHO COMPLETO */
+#documentViewModal {
+    z-index: 1055 !important;
 }
 
-#documentViewModal .modal-content {
-    height: 80vh !important;
+#documentViewModal .modal-dialog,
+#documentViewModal.modal .modal-dialog,
+#documentViewModal.modal.show .modal-dialog {
+    max-width: 98vw !important;
+    width: 98vw !important;
+    margin: 0.5rem auto !important;
+    transform: none !important;
 }
 
-#documentViewModal .modal-body {
-    height: calc(80vh - 120px) !important;
+#documentViewModal .modal-content,
+#documentViewModal.modal .modal-content,
+#documentViewModal.modal.show .modal-content {
+    height: 90vh !important;
+    width: 100% !important;
+    max-width: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    margin: 0 !important;
+    transform: none !important;
+    border-radius: 0.375rem !important;
+}
+
+#documentViewModal .modal-header,
+#documentViewModal.modal .modal-header,
+#documentViewModal.modal.show .modal-header {
+    flex-shrink: 0 !important;
+    padding: 0.75rem 1rem !important;
+    border-bottom: 1px solid #dee2e6 !important;
+    background-color: #f8f9fa !important;
+}
+
+#documentViewModal .modal-body,
+#documentViewModal.modal .modal-body,
+#documentViewModal.modal.show .modal-body {
+    height: calc(90vh - 100px) !important;
     padding: 0 !important;
+    overflow: hidden !important;
+    flex: 1 !important;
+    margin: 0 !important;
 }
 
-#documentViewModal #document-frame {
+#documentViewModal .modal-footer,
+#documentViewModal.modal .modal-footer,
+#documentViewModal.modal.show .modal-footer {
+    flex-shrink: 0 !important;
+    padding: 0.75rem 1rem !important;
+    border-top: 1px solid #dee2e6 !important;
+    background-color: #f8f9fa !important;
+}
+
+#documentViewModal #document-frame,
+#documentViewModal.modal #document-frame,
+#documentViewModal.modal.show #document-frame {
     height: 100% !important;
     width: 100% !important;
     border: none !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Estilos para los botones de acción en la tabla de documentos */
+.table td {
+    vertical-align: middle;
+    padding: 12px 8px;
+}
+
+/* Estilos específicos para botones de editar y eliminar en actividades */
+.edit-document-btn,
+.delete-document-btn {
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    border-radius: 4px !important;
+    white-space: nowrap !important;
+    min-width: 40px !important;
+    height: 32px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    border: 1px solid transparent !important;
+    transition: all 0.2s ease !important;
+    margin: 0 2px !important;
+}
+
+.edit-document-btn {
+    color: #fff !important;
+    background-color: #0d6efd !important;
+    border-color: #0d6efd !important;
+}
+
+.edit-document-btn:hover {
+    background-color: #0b5ed7 !important;
+    border-color: #0a58ca !important;
+}
+
+.delete-document-btn {
+    color: #fff !important;
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+}
+
+.delete-document-btn:hover {
+    background-color: #bb2d3b !important;
+    border-color: #b02a37 !important;
+}
+
+/* Iconos en los botones */
+.edit-document-btn i,
+.delete-document-btn i {
+    font-size: 12px;
+}
+
+/* Asegurar que la columna de acciones tenga un ancho fijo */
+.table th:last-child,
+.table td:last-child {
+    width: 120px;
+    min-width: 120px;
+    text-align: center;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .edit-document-btn,
+    .delete-document-btn {
+        padding: 4px 8px !important;
+        font-size: 11px !important;
+        min-width: 36px !important;
+        height: 28px !important;
+    }
+    
+    .edit-document-btn i,
+    .delete-document-btn i {
+        font-size: 10px;
+    }
+    
+    .table th:last-child,
+    .table td:last-child {
+        width: 100px;
+        min-width: 100px;
+    }
 }
 
 /* Responsive */
@@ -76,8 +204,539 @@
         max-height: 50vh;
     }
     
-    #documentViewModal .modal-dialog {
-        max-width: 95vw !important;
-        width: 95vw !important;
+    /* Ajustes para el modal en móviles - FORZAR */
+    #documentViewModal .modal-dialog,
+    #documentViewModal.modal .modal-dialog,
+    #documentViewModal.modal.show .modal-dialog {
+        max-width: 99vw !important;
+        width: 99vw !important;
+        margin: 0.25rem auto !important;
+    }
+    
+    #documentViewModal .modal-content,
+    #documentViewModal.modal .modal-content,
+    #documentViewModal.modal.show .modal-content {
+        height: 95vh !important;
+    }
+    
+    #documentViewModal .modal-body,
+    #documentViewModal.modal .modal-body,
+    #documentViewModal.modal.show .modal-body {
+        height: calc(95vh - 100px) !important;
+    }
+}
+
+/* ESTILOS FINALES PARA FORZAR EL ANCHO DEL MODAL - MÁXIMA PRIORIDAD */
+body #documentViewModal .modal-dialog {
+    max-width: 98vw !important;
+    width: 98vw !important;
+}
+
+body #documentViewModal.modal .modal-dialog {
+    max-width: 98vw !important;
+    width: 98vw !important;
+}
+
+body #documentViewModal.modal.show .modal-dialog {
+    max-width: 98vw !important;
+    width: 98vw !important;
+}
+
+/* Forzar ancho en móviles también */
+@media (max-width: 768px) {
+    body #documentViewModal .modal-dialog,
+    body #documentViewModal.modal .modal-dialog,
+    body #documentViewModal.modal.show .modal-dialog {
+        max-width: 99vw !important;
+        width: 99vw !important;
+        margin: 0.25rem auto !important;
+    }
+}
+
+/* 🎨 EFECTOS MODERNOS PARA LA TABLA DE GESTIÓN DE DOCUMENTOS */
+
+/* Espaciado mejorado para el main */
+.page-header {
+    padding-top: 3rem !important;
+    padding-bottom: 2rem !important;
+}
+
+.content-section {
+    padding-top: 2rem !important;
+    padding-bottom: 3rem !important;
+}
+
+/* Contenedor de tabla mejorado con efectos modernos */
+.table-container {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e9ecef;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+/* Tabla principal con efectos modernos */
+.table {
+    margin-bottom: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 14px;
+    background: white;
+}
+
+/* Header de tabla con gradiente moderno */
+.table thead.table-primary,
+.table thead.table-primary th,
+.table thead th {
+    background: #1a73e8 !important;
+    background-image: linear-gradient(135deg, #1a73e8, #4285f4) !important;
+    color: white !important;
+    border: none !important;
+}
+
+.table thead th {
+    padding: 18px 16px !important;
+    text-align: left;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    border: none !important;
+    position: relative;
+    color: white !important;
+    background: #1a73e8 !important;
+    background-image: linear-gradient(135deg, #1a73e8, #4285f4) !important;
+}
+
+.table thead th::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.table thead th:last-child::after {
+    display: none;
+}
+
+/* Filas de tabla con efectos hover modernos */
+.table tbody tr {
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #f1f3f4;
+    position: relative;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa !important;
+    transform: scale(1.01);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.table tbody td {
+    padding: 16px !important;
+    vertical-align: middle;
+    border: none !important;
+    color: #495057;
+    position: relative;
+}
+
+.table tbody td:first-child {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Botones de acción modernos con efectos avanzados */
+.edit-document-btn,
+.delete-document-btn {
+    padding: 8px 16px !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    border-radius: 8px !important;
+    white-space: nowrap !important;
+    min-width: auto !important;
+    height: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    border: 1px solid transparent !important;
+    transition: all 0.3s ease !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.3px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    margin: 0 4px !important;
+}
+
+/* Efecto de brillo para botones de acción */
+.edit-document-btn::before,
+.delete-document-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+    z-index: 1;
+}
+
+.edit-document-btn:hover::before,
+.delete-document-btn:hover::before {
+    left: 100%;
+}
+
+/* Botón Editar con gradiente moderno */
+.edit-document-btn {
+    background: linear-gradient(135deg, #17a2b8, #20c997) !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(23, 162, 184, 0.3) !important;
+}
+
+.edit-document-btn:hover {
+    background: linear-gradient(135deg, #138496, #1e7e34) !important;
+    color: white !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 15px rgba(23, 162, 184, 0.4) !important;
+}
+
+.edit-document-btn:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 8px rgba(23, 162, 184, 0.3) !important;
+}
+
+/* Botón Eliminar con gradiente moderno */
+.delete-document-btn {
+    background: linear-gradient(135deg, #dc3545, #e74c3c) !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3) !important;
+}
+
+.delete-document-btn:hover {
+    background: linear-gradient(135deg, #c82333, #c0392b) !important;
+    color: white !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4) !important;
+}
+
+.delete-document-btn:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3) !important;
+}
+
+/* Iconos en los botones con posición relativa */
+.edit-document-btn i,
+.delete-document-btn i {
+    font-size: 12px;
+    position: relative;
+    z-index: 2;
+    margin-right: 4px;
+}
+
+/* Controles de búsqueda modernos */
+.input-group {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    display: flex;
+    align-items: stretch;
+    height: 48px !important;
+}
+
+.input-group .form-select,
+.input-group .form-control {
+    border: 2px solid #e9ecef !important;
+    border-radius: 8px 0 0 8px !important;
+    border-right: none !important;
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+    transition: all 0.3s ease !important;
+    background-color: #f8f9fa !important;
+    flex: 1;
+    height: 48px !important;
+    line-height: 1.4 !important;
+}
+
+.input-group .form-select:focus,
+.input-group .form-control:focus {
+    outline: none !important;
+    border-color: #1a73e8 !important;
+    background-color: white !important;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1) !important;
+    border-right: none !important;
+}
+
+.input-group .btn {
+    border-radius: 0 8px 8px 0 !important;
+    padding: 0 !important;
+    background: #1a73e8 !important;
+    background-image: linear-gradient(135deg, #1a73e8, #4285f4) !important;
+    border: 2px solid #1a73e8 !important;
+    border-left: none !important;
+    color: white !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    min-width: 48px !important;
+    width: 48px !important;
+    height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 16px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+}
+
+.input-group .btn i {
+    font-size: 16px !important;
+    position: relative !important;
+    z-index: 2 !important;
+    margin: 0 !important;
+}
+
+.input-group .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+    z-index: 1;
+}
+
+.input-group .btn:hover::before {
+    left: 100%;
+}
+
+.input-group .btn:hover {
+    background: #1557b0 !important;
+    background-image: linear-gradient(135deg, #1557b0, #3367d6) !important;
+    border-color: #1557b0 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3) !important;
+}
+
+.input-group .btn:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 6px rgba(26, 115, 232, 0.2) !important;
+}
+
+.input-group .btn:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.25) !important;
+}
+
+/* Botón "Nuevo Documento" moderno */
+#add-document-btn,
+.btn-success {
+    background: linear-gradient(135deg, #28a745, #34ce57) !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+#add-document-btn::before,
+.btn-success::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+    z-index: 1;
+}
+
+#add-document-btn:hover::before,
+.btn-success:hover::before {
+    left: 100%;
+}
+
+#add-document-btn:hover,
+.btn-success:hover {
+    background: linear-gradient(135deg, #218838, #28a745) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4) !important;
+}
+
+#add-document-btn i,
+.btn-success i {
+    position: relative;
+    z-index: 2;
+}
+
+/* Paginación moderna */
+.pagination {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 15px !important;
+    padding: 2rem 0 !important;
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid #e9ecef !important;
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+}
+
+.pagination button {
+    background: white !important;
+    color: #1a73e8 !important;
+    border: 2px solid #1a73e8 !important;
+    border-radius: 8px !important;
+    padding: 10px 16px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+.pagination button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #1a73e8, #4285f4) !important;
+    color: white !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 15px rgba(26, 115, 232, 0.3) !important;
+}
+
+.pagination button:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+}
+
+#page-info {
+    font-weight: 600 !important;
+    color: #495057 !important;
+    padding: 0 20px !important;
+    font-size: 14px !important;
+}
+
+/* Animaciones de entrada para filas */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.table tbody tr {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* 🚫 OCULTAR BARRAS DESPLAZADORAS (SCROLLBARS) */
+
+/* Ocultar scrollbars en contenedores de tabla */
+.table-responsive,
+.table-container,
+.table-responsive-sm,
+.table-responsive-md,
+.table-responsive-lg,
+.table-responsive-xl,
+.table-responsive-xxl {
+    /* Firefox */
+    scrollbar-width: none;
+    /* Internet Explorer y Edge */
+    -ms-overflow-style: none;
+}
+
+/* WebKit (Chrome, Safari, Edge moderno) */
+.table-responsive::-webkit-scrollbar,
+.table-container::-webkit-scrollbar,
+.table-responsive-sm::-webkit-scrollbar,
+.table-responsive-md::-webkit-scrollbar,
+.table-responsive-lg::-webkit-scrollbar,
+.table-responsive-xl::-webkit-scrollbar,
+.table-responsive-xxl::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+/* Ocultar scrollbars en cualquier div que contenga tablas */
+div[class*="table"]::-webkit-scrollbar,
+.overflow-auto::-webkit-scrollbar,
+.overflow-scroll::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+div[class*="table"] {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.overflow-auto,
+.overflow-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Asegurar que el contenido siga siendo desplazable pero sin barras visibles */
+.table-responsive {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* Responsive mejorado */
+@media (max-width: 768px) {
+    .edit-document-btn,
+    .delete-document-btn {
+        padding: 6px 12px !important;
+        font-size: 11px !important;
+        margin: 0 2px !important;
+    }
+    
+    .edit-document-btn i,
+    .delete-document-btn i {
+        margin-right: 2px;
+        font-size: 10px;
+    }
+    
+    .table thead th {
+        padding: 12px 8px !important;
+        font-size: 11px !important;
+    }
+    
+    .table tbody td {
+        padding: 12px 8px !important;
+    }
+    
+    .table-responsive {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
     }
 }

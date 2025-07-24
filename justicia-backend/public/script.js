@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // console.log('🔍 [SCRIPT.JS] Aplicando lógica de autenticación en index...');
     
     // 🎯 Configuración para sistema judicial
+    if (typeof BACKEND_URL === 'undefined') {
+        alert('No se encontró config.js o la variable BACKEND_URL. Verifica la configuración.');
+    }
     const setupJudicialAuth = () => {
         // Verificar si ya hay una sesión activa antes de mostrar el modal
         const token = sessionStorage.getItem('token');
@@ -62,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             try {
                 // console.log('🔍 [SCRIPT.JS] Enviando credenciales al servidor...');
-                const response = await fetch('http://192.168.1.17:5000/api/auth/login', {
+                const response = await fetch(`${BACKEND_URL}/api/auth/login`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username, password })

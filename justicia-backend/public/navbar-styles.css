@@ -51,6 +51,16 @@
     font-family: 'Inter', sans-serif;
 }
 
+/* Asegurar que el enlace del título no tenga subrayado */
+.logo a,
+.logo a:hover,
+.logo a:focus,
+.logo a:active,
+.logo a:visited {
+    text-decoration: none !important;
+    color: #333 !important;
+}
+
 /* Estilos para el menú de navegación */
 .nav-links ul {
     display: flex;
@@ -111,4 +121,184 @@
 .nav-buttons .btn-secondary:hover {
     background-color: #f5f5f5;
     color: #333;
+}
+
+/* 🎨 EFECTOS MODERNOS PARA BOTONES DEL HEADER */
+
+/* Estilos base mejorados para todos los botones del header */
+.mobile-actions .btn,
+.mobile-actions a.btn,
+.nav-buttons .btn {
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    overflow: hidden !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    text-decoration: none !important;
+}
+
+/* Efecto de brillo que se desplaza en todos los botones */
+.mobile-actions .btn::before,
+.mobile-actions a.btn::before,
+.nav-buttons .btn::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+    transition: left 0.5s !important;
+    z-index: 1 !important;
+}
+
+.mobile-actions .btn:hover::before,
+.mobile-actions a.btn:hover::before,
+.nav-buttons .btn:hover::before {
+    left: 100% !important;
+}
+
+/* Botón Contacto - Gradiente azul moderno */
+.mobile-actions .btn-primary,
+.mobile-actions a.btn-primary,
+.nav-buttons .btn-primary {
+    background: linear-gradient(135deg, #1a73e8, #4285f4) !important;
+    color: white !important;
+    border: 1px solid transparent !important;
+    box-shadow: 0 4px 15px rgba(26, 115, 232, 0.3) !important;
+}
+
+.mobile-actions .btn-primary:hover,
+.mobile-actions a.btn-primary:hover,
+.nav-buttons .btn-primary:hover {
+    background: linear-gradient(135deg, #1557b0, #3367d6) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(26, 115, 232, 0.4) !important;
+    color: white !important;
+}
+
+.mobile-actions .btn-primary:active,
+.mobile-actions a.btn-primary:active,
+.nav-buttons .btn-primary:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 4px 15px rgba(26, 115, 232, 0.3) !important;
+}
+
+/* Botón Iniciar Sesión / Cerrar Sesión - Estilo outline moderno */
+.mobile-actions .btn-secondary,
+.mobile-actions a.btn-secondary,
+.nav-buttons .btn-secondary,
+#login-btn {
+    background: white !important;
+    color: #1a73e8 !important;
+    border: 2px solid #1a73e8 !important;
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.1) !important;
+}
+
+.mobile-actions .btn-secondary:hover,
+.mobile-actions a.btn-secondary:hover,
+.nav-buttons .btn-secondary:hover,
+#login-btn:hover {
+    background: linear-gradient(135deg, #1a73e8, #4285f4) !important;
+    color: white !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(26, 115, 232, 0.3) !important;
+}
+
+.mobile-actions .btn-secondary:active,
+.mobile-actions a.btn-secondary:active,
+.nav-buttons .btn-secondary:active,
+#login-btn:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.1) !important;
+}
+
+/* Botón Cerrar Sesión - Color original con efectos modernos */
+.btn-logout-purple {
+    background: linear-gradient(135deg, #8e44ad, #9b59b6) !important;
+    color: white !important;
+    border: 1px solid transparent !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    overflow: hidden !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3) !important;
+}
+
+.btn-logout-purple::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+    transition: left 0.5s !important;
+    z-index: 1 !important;
+}
+
+.btn-logout-purple:hover::before {
+    left: 100% !important;
+}
+
+.btn-logout-purple:hover {
+    background: linear-gradient(135deg, #732d91, #8e44ad) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(142, 68, 173, 0.4) !important;
+    color: white !important;
+}
+
+.btn-logout-purple:active {
+    background: linear-gradient(135deg, #663399, #732d91) !important;
+    transform: translateY(0) !important;
+    box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3) !important;
+}
+
+.btn-logout-purple:focus {
+    box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.25) !important;
+    outline: none !important;
+}
+
+/* Efectos adicionales para mejorar la experiencia */
+.mobile-actions .btn:focus,
+.mobile-actions a.btn:focus,
+.nav-buttons .btn:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.25) !important;
+}
+
+/* Animación de pulso sutil para llamar la atención */
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 4px 15px rgba(26, 115, 232, 0.3);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(26, 115, 232, 0.5);
+    }
+    100% {
+        box-shadow: 0 4px 15px rgba(26, 115, 232, 0.3);
+    }
+}
+
+/* Aplicar animación sutil a los botones principales */
+.mobile-actions .btn-primary:not(:hover),
+.nav-buttons .btn-primary:not(:hover) {
+    animation: pulse-glow 3s ease-in-out infinite;
 }

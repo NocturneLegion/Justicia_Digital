@@ -1,5 +1,12 @@
 // 🔒 GESTIÓN DE ACTIVIDADES Y DOCUMENTOS
 document.addEventListener('DOMContentLoaded', () => {
+    // Verificar que BACKEND_URL esté disponible
+    if (typeof BACKEND_URL === 'undefined') {
+        console.error('No se encontró config.js o la variable BACKEND_URL. Verifica la configuración');
+        alert('No se encontró config.js o la variable BACKEND_URL. Verifica la configuración');
+        return;
+    }
+    
     // La autenticación se maneja en auth-global.js
     // Cargar documentos al iniciar
     loadDocuments();
@@ -62,8 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             try {
                 const url = documentId ?
-                    `http://192.168.1.17:5000/api/documentos/${documentId}` :
-                    'http://192.168.1.17:5000/api/documentos';
+                    `${BACKEND_URL}/api/documentos/${documentId}` :
+                    `${BACKEND_URL}/api/documentos`;
                 const method = documentId ? 'PUT' : 'POST';
                 const response = await fetch(url, {
                     method: method,
@@ -100,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch(`http://192.168.1.17:5000/api/documentos?caso_id=${casoId}`, {
+            const response = await fetch(`${BACKEND_URL}/api/documentos?caso_id=${casoId}`, {
                 headers: {
                     'Authorization': `Bearer ${sessionStorage.getItem('token')}`
                 }
@@ -134,8 +141,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             </button>
                         </td>
                         <td>
-                            <button class="btn btn-sm btn-primary me-1 edit-document-btn" data-id="${doc.id}"><i class="fas fa-edit"></i></button>
-                            <button class="btn btn-sm btn-danger delete-document-btn" data-id="${doc.id}"><i class="fas fa-trash-alt"></i></button>
+                            <div class="d-flex gap-1 justify-content-center">
+                                <button class="btn btn-sm btn-primary edit-document-btn" data-id="${doc.id}" title="Editar documento">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-sm btn-danger delete-document-btn" data-id="${doc.id}" title="Eliminar documento">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
                         </td>
                     `;
                     tbody.appendChild(row);
@@ -166,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        fetch(`http://192.168.1.17:5000/api/documentos/${id}/file`, {
+        fetch(`${BACKEND_URL}/api/documentos/${id}/file`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -203,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const documentId = button.dataset.id;
             
             try {
-                const response = await fetch(`http://192.168.1.17:5000/api/documentos/${documentId}`, {
+                const response = await fetch(`${BACKEND_URL}/api/documentos/${documentId}`, {
                     headers: {
                         'Authorization': `Bearer ${sessionStorage.getItem('token')}`
                     }
@@ -241,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         formData.append('nurej', nurej);
 
                         try {
-                            const response = await fetch(`http://192.168.1.17:5000/api/documentos/${documentId}`, {
+                            const response = await fetch(`http://192.168.1.12:5000/api/documentos/${documentId}`, {
                                 method: 'PUT',
                                 headers: {
                                     'Authorization': `Bearer ${sessionStorage.getItem('token')}`
@@ -289,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             newConfirmDeleteBtn.addEventListener('click', async function() {
                 try {
-                    const response = await fetch(`http://192.168.1.17:5000/api/documentos/${documentId}`, {
+                    const response = await fetch(`http://192.168.1.12:5000/api/documentos/${documentId}`, {
                         method: 'DELETE',
                         headers: {
                             'Authorization': `Bearer ${sessionStorage.getItem('token')}`
