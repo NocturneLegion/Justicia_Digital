@@ -20,7 +20,7 @@ const upload = multer({ storage });
 
 // Configuración de CORS
 const corsOptions = {
-  origin: ['http://192.168.1.12:8080', 'http://127.0.0.1:8080'],
+  origin: ['http://10.123.132.42:8080', 'http://10.123.132.42:5000', 'http://127.0.0.1:8080', 'http://127.0.0.1:5000', 'http://localhost:5000', 'http://localhost:8080', 'http://192.168.1.6:8080', 'http://192.168.1.6:5000'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Authorization', 'Content-Type'],
   credentials: true

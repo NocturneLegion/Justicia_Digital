@@ -59,12 +59,8 @@
             const userRole = data.user?.rol;
             // console.log('🔍 [AUTH-GLOBAL.JS] Rol del usuario:', userRole);
             
-            if (currentPage.includes('procedimientos.html') && userRole === 'usuario') {
-                // console.log('🚨 [AUTH-GLOBAL.JS] Usuario sin permisos para procedimientos, redirigiendo...');
-                alert('Acceso restringido. No tiene permisos para gestionar procedimientos.');
-                window.location.href = 'actividades.html';
-                return;
-            }
+            // Los usuarios pueden VER procedimientos, solo no pueden editarlos
+            // Los usuarios con rol 'usuario' pueden acceder a procedimientos en modo lectura
             
             // console.log('✅ [AUTH-GLOBAL.JS] Autenticación y permisos verificados correctamente');
             

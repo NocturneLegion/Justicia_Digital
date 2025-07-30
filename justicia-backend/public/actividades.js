@@ -128,6 +128,34 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 documents.forEach(doc => {
                     const row = document.createElement('tr');
+                    
+                    // Verificar permisos del usuario actual
+                    const currentUser = JSON.parse(sessionStorage.getItem('currentUser') || '{}');
+                    const canEdit = currentUser.rol !== 'usuario';
+                    const canDelete = currentUser.rol !== 'usuario';
+                    
+                    // Generar botones de acción según permisos
+                    let actionButtons = '';
+                    if (canEdit) {
+                        actionButtons += `
+                            <button class="btn btn-sm btn-primary edit-document-btn" data-id="${doc.id}" title="Editar documento">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        `;
+                    }
+                    if (canDelete) {
+                        actionButtons += `
+                            <button class="btn btn-sm btn-danger delete-document-btn" data-id="${doc.id}" title="Eliminar documento">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        `;
+                    }
+                    
+                    // Si no hay botones de acción, mostrar mensaje
+                    if (!actionButtons) {
+                        actionButtons = '<span class="text-muted small">Solo lectura</span>';
+                    }
+                    
                     row.innerHTML = `
                         <td>${doc.tipo || ''}</td>
                         <td>${new Date(doc.fecha).toLocaleDateString()}</td>
@@ -142,12 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </td>
                         <td>
                             <div class="d-flex gap-1 justify-content-center">
-                                <button class="btn btn-sm btn-primary edit-document-btn" data-id="${doc.id}" title="Editar documento">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <button class="btn btn-sm btn-danger delete-document-btn" data-id="${doc.id}" title="Eliminar documento">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
+                                ${actionButtons}
                             </div>
                         </td>
                     `;
@@ -212,6 +235,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Funcionalidad para editar documentos
     document.addEventListener('click', async function (e) {
         if (e.target.matches('.edit-document-btn') || e.target.closest('.edit-document-btn')) {
+            // Verificar permisos antes de proceder
+            const currentUser = JSON.parse(sessionStorage.getItem('currentUser') || '{}');
+            if (currentUser.rol === 'usuario') {
+                alert('No tiene permisos para editar documentos.');
+                return;
+            }
+            
             const button = e.target.matches('.edit-document-btn') ? e.target : e.target.closest('.edit-document-btn');
             const documentId = button.dataset.id;
             
@@ -254,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         formData.append('nurej', nurej);
 
                         try {
-                            const response = await fetch(`http://192.168.1.12:5000/api/documentos/${documentId}`, {
+                            const response = await fetch(`${BACKEND_URL}/api/documentos/${documentId}`, {
                                 method: 'PUT',
                                 headers: {
                                     'Authorization': `Bearer ${sessionStorage.getItem('token')}`
@@ -288,6 +318,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Funcionalidad para eliminar documentos
     document.addEventListener('click', async function (e) {
         if (e.target.matches('.delete-document-btn') || e.target.closest('.delete-document-btn')) {
+            // Verificar permisos antes de proceder
+            const currentUser = JSON.parse(sessionStorage.getItem('currentUser') || '{}');
+            if (currentUser.rol === 'usuario') {
+                alert('No tiene permisos para eliminar documentos.');
+                return;
+            }
+            
             const button = e.target.matches('.delete-document-btn') ? e.target : e.target.closest('.delete-document-btn');
             const documentId = button.dataset.id;
             
@@ -301,8 +338,16 @@ document.addEventListener('DOMContentLoaded', () => {
             confirmDeleteBtn.parentNode.replaceChild(newConfirmDeleteBtn, confirmDeleteBtn);
             
             newConfirmDeleteBtn.addEventListener('click', async function() {
+                // Verificar permisos nuevamente antes de eliminar
+                const currentUser = JSON.parse(sessionStorage.getItem('currentUser') || '{}');
+                if (currentUser.rol === 'usuario') {
+                    alert('No tiene permisos para eliminar documentos.');
+                    confirmModal.hide();
+                    return;
+                }
+                
                 try {
-                    const response = await fetch(`http://192.168.1.12:5000/api/documentos/${documentId}`, {
+                    const response = await fetch(`${BACKEND_URL}/api/documentos/${documentId}`, {
                         method: 'DELETE',
                         headers: {
                             'Authorization': `Bearer ${sessionStorage.getItem('token')}`

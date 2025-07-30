@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
     
     try {
-        const response = await fetch('http://192.168.1.12:5000/api/auth/verify', {
+        const response = await fetch(`${BACKEND_URL}/api/auth/verify`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         try {
-            const res = await fetch('http://192.168.1.12:5000/api/auth/verify', {
+            const res = await fetch(`${BACKEND_URL}/api/auth/verify`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
 
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const getUsers = async () => {
         try {
-            const response = await fetch('http://192.168.1.12:5000/api/usuarios', {
+            const response = await fetch(`${BACKEND_URL}/api/usuarios`, {
                 headers: {
                     'Authorization': `Bearer ${sessionStorage.getItem('token') || ''}`
                 }
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const deleteUser = async (userId) => {
         try {
-            const response = await fetch(`http://192.168.1.12:5000/api/usuarios/${userId}`, {
+            const response = await fetch(`${BACKEND_URL}/api/usuarios/${userId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${sessionStorage.getItem('token') || ''}`
@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // console.log('Enviando datos al backend:', userData);
             let response;
             if (userId) {
-                response = await fetch(`http://192.168.1.12:5000/api/usuarios/${userId}`, {
+                response = await fetch(`${BACKEND_URL}/api/usuarios/${userId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     body: JSON.stringify(userData)
                 });
             } else {
-                response = await fetch('http://192.168.1.12:5000/api/usuarios', {
+                response = await fetch(`${BACKEND_URL}/api/usuarios`, {
                     method: 'POST',
                     headers: {
                         'Authorization': `Bearer ${sessionStorage.getItem('token') || ''}`,

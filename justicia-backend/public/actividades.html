@@ -304,7 +304,7 @@
             return;
         }
 
-        fetch(`http://192.168.1.12:5000/api/documentos/${id}/file`, {
+        fetch(`${BACKEND_URL}/api/documentos/${id}/file`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }

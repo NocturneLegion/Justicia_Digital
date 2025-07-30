@@ -18,7 +18,7 @@
             canEditUsuarios: false,
             canDeleteUsuarios: false
         },
-        'abogado': {
+                'abogado': {
             canViewProcedimientos: true,
             canCreateCasos: true,
             canEditCasos: true,
@@ -92,8 +92,10 @@
         if (!currentPage.includes('usuarios.html')) {
             // Ocultar botones según permisos en otras páginas
             hideElementsIfNoPermission('.btn-add-case, #add-case-btn', 'canCreateCasos');
-            hideElementsIfNoPermission('.btn-edit, .edit-document-btn', 'canEditCasos');
-            hideElementsIfNoPermission('.btn-delete, .delete-document-btn', 'canDeleteCasos');
+            hideElementsIfNoPermission('.btn-edit', 'canEditCasos');
+            hideElementsIfNoPermission('.edit-document-btn', 'canEditDocuments');
+            hideElementsIfNoPermission('.btn-delete', 'canDeleteCasos');
+            hideElementsIfNoPermission('.delete-document-btn', 'canDeleteDocuments');
             hideElementsIfNoPermission('#add-document-btn', 'canUploadDocuments');
         }
         
@@ -147,9 +149,7 @@
         console.log('🔍 [PERMISSIONS] Aplicando permisos de usuarios para:', user.rol);
         
         if (!hasPermission('canAccessUsuarios')) {
-            // Redirigir si no tiene acceso
-            alert('Acceso restringido. No tiene permisos para gestionar usuarios.');
-            window.location.href = 'procedimientos.html';
+            // Ya se maneja en checkPageAccess, no duplicar alerta aquí
             return;
         }
         
@@ -250,7 +250,7 @@
         const user = getCurrentUser();
         
         if (!user) {
-            // Sin usuario, redirigir a login
+            // Sin usuario, redirigir a login silenciosamente
             if (!currentPage.includes('index.html')) {
                 window.location.href = 'index.html';
             }
@@ -259,8 +259,14 @@
         
         // Verificar acceso específico a usuarios.html
         if (currentPage.includes('usuarios.html') && !hasPermission('canAccessUsuarios')) {
-            alert('Acceso restringido. No tiene permisos para gestionar usuarios.');
-            window.location.href = 'procedimientos.html';
+            // Evitar múltiples alertas - solo mostrar una vez
+            if (!window.permissionAlertShown) {
+                window.permissionAlertShown = true;
+                alert('Acceso restringido. No tiene permisos para gestionar usuarios.');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 100);
+            }
             return false;
         }
         
@@ -274,6 +280,25 @@
                 applyPermissions();
             }
         }, 300);
+        
+        // Aplicar permisos también después de que se carguen los elementos dinámicos
+        setTimeout(() => {
+            applyPermissions();
+        }, 1000);
+        
+        // Observar cambios en el DOM para aplicar permisos a elementos nuevos (con throttling)
+        let observerTimeout;
+        const observer = new MutationObserver(() => {
+            if (observerTimeout) clearTimeout(observerTimeout);
+            observerTimeout = setTimeout(() => {
+                applyPermissions();
+            }, 500); // Solo aplicar permisos cada 500ms máximo
+        });
+        
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
     });
     
     // Exponer funciones globalmente
